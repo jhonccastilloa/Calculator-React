@@ -5,10 +5,15 @@ import Screen from "./components/Screen";
 import ButtonClear from "./components/ButtonClear";
 function App() {
   const [num1, setNum1] = useState("");
-  const [input, setInput] = useState("");
+  const [input, setInput] = useState("0");
   const [operator, setOperator] = useState(false);
   const valueInput = (value) => {
-    evaluar(value);
+    if (input=='Infinito'){
+      return setInput(value)
+    }
+    if (input==='0'){
+      return setInput(value)
+    }
     if (value === "=") {
       let operacion = input.slice(num1.length, num1.length + 1);
       let num2 = input.slice(num1.length + 1);
@@ -18,7 +23,7 @@ function App() {
       console.log(num2);
       if (operacion === "+") {
         console.log(Number(num1) + Number(num2));
-        setOperator(false); 
+        setOperator(false);
         return setInput(Number(num1) + Number(num2) + "");
       } else if (operacion === "-") {
         console.log(Number(num1) - Number(num2));
@@ -29,6 +34,10 @@ function App() {
         setOperator(false);
         return setInput(Number(num1) * Number(num2) + "");
       } else if (operacion === "/") {
+        if (num2 == 0) {
+          setOperator(false);
+          return setInput("Infinito");
+        }
         console.log(Number(num1) / Number(num2));
         setOperator(false);
         return setInput(Number(num1) / Number(num2) + "");
@@ -43,9 +52,7 @@ function App() {
     }
     setInput(input + value);
   };
-  function evaluar(value) {
-    console.log("hola");
-  }
+
   const clearInput = () => {
     console.log("se reinicio");
     setInput("");
