@@ -22,3 +22,10 @@
   .operador:hover {
     background-color: #7a400c;
   }
+
+  @media (max-width: 768px){
+    .boton-contenedor {
+      height: 70px;
+      font-size: 28px;
+    }
+  }

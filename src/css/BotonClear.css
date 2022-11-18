@@ -17,3 +17,10 @@
   .boton-clear:hover {
     background-color: #ebb000;
   }
+
+  @media (max-width: 768px){
+    .boton-clear {
+      height: 40px;
+      font-size: 1.3em;
+    }
+  }
